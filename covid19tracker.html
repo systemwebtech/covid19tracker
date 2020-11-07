@@ -1,0 +1,87 @@
+<?php 
+$data = file_get_contents('https://api.covid19api.com/summary');
+$coronadata = json_decode($data);
+
+?><!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Solway&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+	body{margin:5px; }
+	
+	</style>
+	</head>
+	<body onload="fetch()">
+	<section class="container-fluid">
+	<div class="table-responsive">
+	<table class="table-bordered table-striped text" id="tbval">
+	<tr><th>Country</th>
+	<th>TotalConfirmed</th>
+	<th>TotalRecovered</th>
+	<th>TotalDeath</th>
+	<th>NewRecovered</th>
+	<th>NewDeaths</th>
+	</tr>
+	</table>
+	
+	
+	
+	
+	
+	</div></section>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+
+function fetch(){
+$.get{"https://api.covid19api.com/summary",
+
+function(data){
+
+var tbval = document.getElementById('tbval');
+for (var i=1; i<(data['Countries'].length); i++){
+var x = tbval.insertRow();
+x.insertCell(0);
+tbval.rows[i].cells[0].innerHTML = data['Countries'][i-1]['Country'];
+tbval.rows[i].cells[0].style.background = '#7a4a91';
+tbval.rows[i].cells[0].style.color = '#fff';
+x.insertCell(1);
+tbval.rows[i].cells[1].innerHTML = data['Countries'][i-1]['TotalConfirmed'];
+tbval.rows[i].cells[1].style.background = '#4bb7d8';
+
+x.insertCell(1);
+tbval.rows[i].cells[1].innerHTML = data['Countries'][i-1]['TotalRecovered'];
+tbval.rows[i].cells[1].style.background = '#4bb7d8';
+
+x.insertCell(2);
+tbval.rows[i].cells[2].innerHTML = data['Countries'][i-1]['TotalDeath'];
+tbval.rows[i].cells[2].style.background = '#4bb7d8';
+
+x.insertCell(3);
+tbval.rows[i].cells[3].innerHTML = data['Countries'][i-1]['NewRecovered'];
+tbval.rows[i].cells[3].style.background = '#4bb7d8';
+
+x.insertCell(4);
+tbval.rows[i].cells[4].innerHTML = data['Countries'][i-1]['NewDeaths'];
+tbval.rows[i].cells[4].style.background = '#4bb7d8';
+}
+}
+
+}
+}
+
+</script>
+	</body>
+</html>
