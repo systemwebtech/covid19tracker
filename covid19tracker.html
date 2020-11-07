@@ -1,9 +1,10 @@
-<?php 
+<!DOCTYPE html>
+<html>
+	<?php 
 $data = file_get_contents('https://api.covid19api.com/summary');
 $coronadata = json_decode($data);
 
-?><!DOCTYPE html>
-<html>
+?>
 <head>
 	<title></title>
 	<!-- Latest compiled and minified CSS -->
@@ -27,7 +28,7 @@ $coronadata = json_decode($data);
 	<body onload="fetch()">
 	<section class="container-fluid">
 	<div class="table-responsive">
-	<table class="table-bordered table-striped text" id="tbval">
+	<table class="table table-bordered table-striped text" id="tbval">
 	<tr><th>Country</th>
 	<th>TotalConfirmed</th>
 	<th>TotalRecovered</th>
